@@ -4,7 +4,7 @@
     "use strict";
     var __webpack_exports__ = {};
     /*!********************************************************!*\
-      !*** ../src/js/custom/apps/ecommerce/sales/datatable.bak.js ***!
+      !*** ../src/js/custom/apps/ecommerce/sales/datatable.js ***!
       \********************************************************/
 
 // Class definition
@@ -185,7 +185,7 @@
     /******/
 })()
 ;
-//# sourceMappingURL=datatable.bak.js.map
+//# sourceMappingURL=datatable.js.map
 
 
 

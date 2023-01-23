@@ -21,7 +21,7 @@ public class GroupUiController {
         theme.initLayout();
     }
 
-    @GetMapping({ "/", "/groups" })
+    @GetMapping({  "/groups" })
     public String groups() {
         String[] vendors = { "amcharts", "amcharts-maps", "amcharts-stock" };
         theme.addVendors(vendors);

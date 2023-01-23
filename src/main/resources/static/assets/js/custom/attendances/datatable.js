@@ -95,9 +95,9 @@
                         return data ? data : '?';
                     }
                 }, {
-                    data: 'user.group',
+                    data: 'user.group.name',
                     render: function (data) {
-                        return data ? data.name : '?';
+                        return data ? data : '?';
                     }
                 }, {
                     data: 'date',

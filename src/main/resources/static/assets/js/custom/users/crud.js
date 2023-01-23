@@ -34,7 +34,6 @@
             // Team assign. For more info, plase visit the official plugin site: https://select2.org/
             $(form.querySelector('[name="group"]')).select2().on('change', function () {
                 // Revalidate the field when an option is chosen
-                console.log('selected')
                 validator.revalidateField('group');
             });
         }
@@ -59,6 +58,13 @@
                             validators: {
                                 notEmpty: {
                                     message: 'Ime i prezime je obvezno polje'
+                                }
+                            }
+                        },
+                        'group': {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Grupa je obvezno polje'
                                 }
                             }
                         }

@@ -21,7 +21,7 @@ public class UserUiController {
         theme.initLayout();
     }
 
-    @GetMapping({ "/", "/users" })
+    @GetMapping("/users")
     public String groups() {
         String[] vendors = { "amcharts", "amcharts-maps", "amcharts-stock" };
         theme.addVendors(vendors);
@@ -34,7 +34,7 @@ public class UserUiController {
         return theme.getPageView("dashboards", "users");
     }
 
-    @GetMapping({ "/", "/stats" })
+    @GetMapping("/stats")
     public String stats() {
         String[] vendors = { "amcharts", "amcharts-maps", "amcharts-stock" };
         theme.addVendors(vendors);
