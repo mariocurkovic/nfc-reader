@@ -57,7 +57,7 @@
                     }
                 },
                 'serverSide': true,
-                order: [[2, 'desc']],
+                order: [[1, 'asc']],
                 columns: [{
                     data: 'id',
                     searchable: false
