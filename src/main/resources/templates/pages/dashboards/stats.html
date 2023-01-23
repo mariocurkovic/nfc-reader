@@ -1,0 +1,17 @@
+<html lang="en" data-theme="dark" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{${@theme.getView(@settings.getDefaultLayout())}}" >
+<head>
+    <title>Korisnici</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <!--begin::Row-->
+    <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+        <!--begin::Col-->
+        <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12 mb-md-5 mb-xl-10">
+            <div th:replace="partials/widgets/stats_datatable.html"></div>
+        </div>
+        <!--end::Col-->
+    </div>
+</div>
+</body>
+</html>
