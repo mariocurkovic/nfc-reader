@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.nio.file.FileSystems;
@@ -22,7 +23,6 @@ import java.util.Map;
 public class CronThread implements DisposableBean, Runnable {
 
     private volatile boolean isActive;
-
     @Autowired
     private AttendanceService attendanceService;
 
@@ -40,9 +40,15 @@ public class CronThread implements DisposableBean, Runnable {
 
         isActive = true;
 
-        String filePath = System.getProperty("user.home") + "\\Desktop\\NFC";
+        String rootDirectory = System.getProperty("rootDirectory");
 
-        final Path path = FileSystems.getDefault().getPath(filePath);
+        if (rootDirectory == null) {
+            rootDirectory = System.getProperty("user.home") + "\\Desktop\\NFC";
+        }
+
+        logger.info("rootDirectory: " + rootDirectory);
+
+        final Path path = FileSystems.getDefault().getPath(rootDirectory);
         try (final WatchService watchService = FileSystems.getDefault().newWatchService()) {
             final WatchKey watchKey = path.register(watchService, StandardWatchEventKinds.ENTRY_MODIFY);
             while (isActive) {
@@ -51,7 +57,7 @@ public class CronThread implements DisposableBean, Runnable {
                     //we only register "ENTRY_MODIFY" so the context is always a Path.
                     final Path changed = (Path) event.context();
                     if (changed.endsWith("reader.txt")) {
-                        String content = Files.readString(FileSystems.getDefault().getPath(filePath + "\\reader.txt"));
+                        String content = Files.readString(FileSystems.getDefault().getPath(rootDirectory + "\\reader.txt"));
                         // logger.info(content);
                         ObjectMapper mapper = new ObjectMapper();
                         String nfcUid = (String) mapper.readValue(content, Map.class).get("Uid");
